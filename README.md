@@ -60,5 +60,4 @@ rqt_graph
 Y para visualizar graficamente el robot que ha ejecutado el archivo .launch se usa _rviz_ el cual abre una interfaz gráfica desde la cual se pueden observar distintos procesos o simulaciones en 3D para librerías que asi lo requieran en este caso cargará el modelo dentro de un entorno 3D, para ejecutarlo se hace mediante la siguiente sentencia
 ```
 rosrun rviz rviz -d`rospack find rbx1_nav`/sim.rviz
-
 ```
