@@ -61,3 +61,6 @@ Y para visualizar graficamente el robot que ha ejecutado el archivo .launch se u
 ```
 rosrun rviz rviz -d`rospack find rbx1_nav`/sim.rviz
 ```
+## Autor
+
+* Eymer S. Tapias
