@@ -83,7 +83,7 @@ cd ~/catkin_ws/src/rbx1/rbx1_bringup/launch
 ```
 gedit fake_turtlebot.launch
 ```
-* Dentro del archivo se debe buscar la parte del código que ejecuta el nodo llamado _arbotix_ marcado con los símbolos "<->", en una nueva línea dentro de este segmento de código se debe escribir lo siguiente:
+* Dentro del archivo se debe buscar la parte del código que ejecuta el nodo llamado _arbotix_ marcado con los símbolos </>, en una nueva línea dentro de este segmento de código se debe escribir lo siguiente:
 ```
 <remap from="/cmd_vel" to="/turtle1/cmd_vel"/>
 ```
