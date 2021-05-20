@@ -92,6 +92,8 @@ gedit fake_turtlebot.launch
 _NOTA: En este repositorio dejo adjunto el archivo .launch modificado para comprobar los cambios o si lo desea reemplezar con el de su proyecto_ 
 
 
-## Autor
+## Autores
 
 * Eymer S. Tapias
+* Mauricio Goméz
+* Nikcolas Rojas
