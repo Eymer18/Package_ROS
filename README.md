@@ -87,9 +87,9 @@ gedit fake_turtlebot.launch
 ```
 <remap from="/cmd_vel" to="/turtle1/cmd_vel"/>
 ```
-* Finalmente se debe guardar, se matan los procesos en ejecución y se repite el paso 3 y junto con la setnecia del teleoperador. Ahora se puede controlar el robot _arbotix RBX1_ dentro del entorno _rviz_ con la característica _teleop_key_ del ejemplo del bot de turtle ROS. 
+* Finalmente se debe guardar, se matan los procesos en ejecución y se repite el paso 3 junto con la sentencia del teleoperador. Ahora se puede controlar el robot _arbotix RBX1_ dentro del entorno _rviz_ con la característica _teleop_key_ del ejemplo del bot de turtle ROS. 
 
-_NOTA: En este repositorio dejo adjunto el archivo .launch modificado para comprobar o si se desea reemplezar con el de su proyecto_ 
+_NOTA: En este repositorio dejo adjunto el archivo .launch modificado para comprobar los cambios o si lo desea reemplezar con el de su proyecto_ 
 
 
 ## Autor
