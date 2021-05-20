@@ -61,7 +61,7 @@ Y para visualizar graficamente el robot que ha ejecutado el archivo .launch se u
 ```
 rosrun rviz rviz -d`rospack find rbx1_nav`/sim.rviz
 ```
-### Cuarto paso: Modificar el archivo _.launch__catkin_ws/src/rbx1/rbx1_bringup/launch_
+### Cuarto paso: Modificar el archivo _.launch_ 
 Para este ejemplo modificaremos el archivo con el cual estamos trabajando _fake_turtlebot.launch_. En este caso en especifico, se modificará un topic dentro del archivo para que el robot RBX1 sea compatible con la característica teleop_key del ejemplo de turtlebot incluido en ROS.
 _Nota: Para realizar este paso, se debe haber realizado el tercer paso correctamente_
 
