@@ -1,4 +1,4 @@
-# Package_ROS
+# ROS_Package_RBX1
 
 _Toda la documentación esta basada en clases de ROS(2021-I) sobre notas de clase y la interpretación de packages de 3ros_
 
