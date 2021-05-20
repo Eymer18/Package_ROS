@@ -1,98 +1,98 @@
 # ROS_Package_RBX1
 
-_Toda la documentación esta basada en clases de ROS(2021-I) sobre notas de clase y la interpretación de packages de 3ros_
+_All documentation is based on ROS classes (2021-I) on class notes and the interpretation of 3rd party packages_
 
 ## Robot RBX1 
 
-### Primer paso: Crear un workspace
+### First step: Create a workspace
 
-* En un primer terminal se ejecuta la siguiente sentencia para crear el workspace "catkin_ws" en home y dentro la carpeta scr:
+* In a first terminal, the following statement is executed to create the workspace "catkin_ws" in home and inside the scr folder:
 ```
 mkdir -p ~/catkin_ws/scr
 ```
 
-* En el mismo terminal se ejecuta la siguiente sentencia para ir al workspace creado: 
+* In the same terminal, the following statement is executed to go to the created workspace: 
 ```
 cd catkin_ws
 ```
 
-* Y nuevamente en el mismo terminal se ejecuta la siguiente sentencia para compilar el workspace y empezar a crear packages dentro de el: 
+* And again in the same terminal the following sentence is executed to compile the workspace and start creating packages within it: 
 ```
 catkin_make
 ```
 
-### Segundo paso: Instalar el repositorio RBX1
+### Step Two: Install RBX1 Repository
 
-Para instalar directamente desde el repositorio de ROS se ejecuta la siguiente sentencia en un terminal:
+To install directly from the ROS repository, execute the following statement in a terminal:
 ```
 sudo apt-get install ros-kinetic-rbx1
 ```
-_Nota: Para este repositorio se usa la distribución de kinectic, en tal caso de tener una distribución diferente, verifique y cambie la sentencia para su versión de ROS_   
+_Note: For this repository the kinectic distribution is used, in this case of having a different distribution, check and change the statement for your version of ROS_   
 
-O si se desea instalar desde un repositorio de github se debe hacer lo siguiente:
+Or if you want to install from a github repository you should do the following:
 
-* En un terminal para ir a la carpeta de origen del workspace se ejecuta la siguiente sentencia:
+* In a terminal to go to the source folder of the workspace, the following sentence is executed:
 ```
 cd ~/catkin_ws/src
 ```
 
-* Y en el mismo terminal se ejecuta la siguiente sentencia para copiar el repositorio RBX1 del github del autor: 
+* And in the same terminal the following statement is executed to copy the RBX1 repository from the author's github: 
 ```
 git clone https://github.com/pirobot/rbx1.git
 ```
-### Tercer paso: Ejecutar el archivo _.launch_
-Los archivos .launch sirven para ejecutar varios archivos o nodos al mismo tiempo, sin tener que estar ejecutando nodo por nodo en terminales diferentes. Primero debemos inicializar el entorno de ROS para poder trabajar con los nodos y demás, para ello se ejecuta la siguiente sentencia en un terminal:
+### Third step: Run the _.launch_ file
+Launch files are used to run multiple files or nodes at the same time, without having to be running node by node on different terminals. First we must initialize the ROS environment to be able to work with the nodes and others, for this the following sentence is executed in a terminal:
 ```
 roscore
 ```
-El paquete de RBX1 contiene varios .launch, el archivo especifico el cual se va a trabajar es _fake_turtlebot.launch_ el cual puede ser encontrado en el directorio _catkin_ws/src/rbx1/rbx1_bringup/launch_ y se ejecuta con la siguiente sentencia:
+The RBX1 package contains several .launch, the specific file which will work is _fake_turtlebot.launch_ which can be found in the directory _catkin_ws/src/rbx1/rbx1_bringup/launch_ and is executed with the following statement:
 ```
 roslaunch rbx1_bringup fake_turtlebot.launch
 ```
-Una forma de visualizar los nodos que ejecuta un archivo .launch es mediante el _rqt_grahp_ el cual provee un elemento gráfico para visualizar topics y nodos conectados actualmente, para ejecutarlo se puede hacer mediante las siguientes sentencias:
+One way to visualize the nodes that a .launch file executes is through the _rqt_grahp_ which provides a graphic element to visualize topics and nodes currently connected, to execute it can be done through the following sentences:
 ```
 rosrun rqt_graph rqt_graph
 ```
-O bien:
+O well:
 ```
 rqt_graph
 ```
-Y para visualizar graficamente el robot que ha ejecutado el archivo .launch se usa _rviz_ el cual abre una interfaz gráfica desde la cual se pueden observar distintos procesos o simulaciones en 3D para librerías que asi lo requieran en este caso cargará el modelo dentro de un entorno 3D, para ejecutarlo se hace mediante la siguiente sentencia:
+And to graphically display the robot has executed the file .launch used rviz which opens a graphical interface from which you can see different processes or 3D simulations for libraries that require it in this case load the model within an environment 3D, to execute it is done through the following sentence:
 ```
 rosrun rviz rviz -d`rospack find rbx1_nav`/sim.rviz
 ```
-### Cuarto paso: Modificar el archivo _.launch_ 
-Para este ejemplo modificaremos el archivo con el cual estamos trabajando _fake_turtlebot.launch_. En este caso en especifico, se modificará un topic dentro del archivo para que el robot RBX1 sea compatible con la característica teleop_key del ejemplo de turtlebot incluido en ROS.
-_Nota: Para realizar este paso, se debe haber realizado el tercer paso correctamente_
+### Step Four: Modify the _.launch_ file
+For this example we will modify the file with which we are working _fake_turtlebot.launch_. In this specific case, a topic will be modified within the file so that the RBX1 robot is compatible with the teleop_key feature of the turtlebot example included in ROS. 
+_Note: To perform this step, the third step must have been completed correctly_
 
-* En un terminal nuevo para utilizar el teleoperador, es necesario ejecutar la siguiente sentencia:
+* In a new terminal to use the teleoperator, it is necessary to execute the following statement:
 ```
 rosrun turtlesim turtle_teleop_key
 ```
-* Y en otro terminal para saber el topic a modificar, se ejecuta la siguiente sentencia:
+* And in another terminal to know the topic to modify, the following sentence is executed:
 ```
 rostopic list
 ```
-En los topics actuales, se aprecia que hay dos topics similares: _/cmd_vel_ y _/turtle1/cmd_vel_. El topic a modificar es precisamente _/turtle1/cmd_vel, al matar el proceso _teleop_key_ se puede ver que el topic llamado _/turtle1/cmd_vel_ desaparecerá. Para realizar los cambios se debe hacer lo siguiente:
+In the current topics, it can be seen that there are two similar topics: _/cmd_vel_ and _/turtle1/cmd_vel_. The topic to modify is precisely _/turtle1/cmd_vel_, when killing the _teleop_key_ process you can see that the topic called _/turtle1/cmd_vel_ will disappear. To make the changes you must do the following::
 
-* Primero hay que dirigirse al directorio en especifico que contiene el _.launch_ el cual mecione antes _catkin_ws/src/rbx1/rbx1_bringup/launch_. Se puede buscar en los archivos directamente yendo a la carpeta o acceder a el mediante la siguiente sentencia:
+* First you have to go to the specific directory that contains the _.launch_ which mentioned before _catkin_ws/src/rbx1/rbx1_bringup/launch_. You can search the files directly by going to the folder or access it using the following statement:
 ```
 cd ~/catkin_ws/src/rbx1/rbx1_bringup/launch
 ```
-* Si se accedió mediante la carpeta se puede abrir el archivo con cualquier editor de texto, y si fue mediante el terminal la mejor forma de editarlo graficamente es con la siguiente sentencia:
+* If it was accessed through the folder, the file can be opened with any text editor, and if it was through the terminal, the best way to edit it graphically is with the following statement:
 ```
 gedit fake_turtlebot.launch
 ```
-* Dentro del archivo se debe buscar la parte del código que ejecuta el nodo llamado _arbotix_ marcado con los símbolos </>, en una nueva línea dentro de este segmento de código se debe escribir lo siguiente:
+* Inside the file you must find the part of the code that executes the node called arbotix marked with the symbols </>, in a new line within this code segment you must write the following:
 ```
 <remap from="/cmd_vel" to="/turtle1/cmd_vel"/>
 ```
-* Finalmente se debe guardar, se matan los procesos en ejecución y se repite el paso 3 junto con la sentencia del teleoperador. Ahora se puede controlar el robot _arbotix RBX1_ dentro del entorno _rviz_ con la característica _teleop_key_ del ejemplo del bot de turtle ROS. 
+* Finally, it must be saved, the running processes are killed and step 3 is repeated together with the teleoperator's sentence. The _arbotix RBX1_ robot can now be controlled within the _rviz_ environment with the _teleop_key_ feature from the ROS turtle bot example. 
 
-_NOTA: En este repositorio dejo adjunto el archivo .launch modificado para comprobar los cambios o si lo desea reemplezar con el de su proyecto_ 
+_NOTE: In this repository I attach the modified .launch file to check the changes or if you want to replace it with the one from your project_ 
 
 
-## Autores
+## Authors
 
 * Eymer S. Tapias
 * Mauricio Goméz
